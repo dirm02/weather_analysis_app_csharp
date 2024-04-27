@@ -1,0 +1,83 @@
+﻿<Window x:Class="WeatherApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:local="clr-namespace:WeatherApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="850" Width="1300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <StackPanel>
+        <StackPanel Height="100">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="300,20,0,0" Orientation="Vertical">
+                    <TextBlock Text="Location" FontSize="20" Width="200"></TextBlock>
+                    <TextBox x:Name="Location" Margin="0,20,0,0" Width="200" FontSize="20"></TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="50,20,0,0" Orientation="Horizontal">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Start Date" FontSize="20" Width="100"></TextBlock>
+                            <TextBox x:Name="startDate" Width="200" FontSize="20"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                            <TextBlock Text="End Date" FontSize="20" Width="100"></TextBlock>
+                            <TextBox x:Name="endDate" Width="200" FontSize="20"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Margin="40,40,0,0" Content="Submit" FontSize="20" Width="100" Click="onSubmitClick"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>            
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="600">
+                    <lvc:CartesianChart Series="{Binding SeriesCollection_temp}" LegendLocation="Right" Height="350">
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Temperature" LabelFormatter="{Binding YFormatter_temp}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Days" Labels="{Binding Labels_temp}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart>
+                </StackPanel>
+                <StackPanel Margin="50,0,0,0" Width="600">
+                    <lvc:CartesianChart Series="{Binding SeriesCollection_humidity}" LegendLocation="Right" Height="350">
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Humidity" LabelFormatter="{Binding YFormatter_humidity}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Days" Labels="{Binding Labels_humidity}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="600">
+                    <lvc:CartesianChart Series="{Binding SeriesCollection_precip}" LegendLocation="Right" Height="350">
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Precipitation" LabelFormatter="{Binding YFormatter_precip}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Days" Labels="{Binding Labels_precip}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart>
+                </StackPanel>
+                <StackPanel Margin="50,0,0,0" Width="600">
+                    <lvc:CartesianChart Series="{Binding SeriesCollection_wind}" LegendLocation="Right" Height="350">
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Wind Speed" LabelFormatter="{Binding YFormatter_wind}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Days" Labels="{Binding Labels_wind}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart>
+                </StackPanel>
+            </StackPanel>
+            
+        </StackPanel>
+    </StackPanel>
+</Window>
